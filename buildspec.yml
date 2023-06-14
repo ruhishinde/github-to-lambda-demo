@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Zipping deployment package..."
  ##Local directory##     
-      - cd .\github-to-lambda-demo\lambda_function.py
+      - cd .\github-to-lambda-demo\
  ##lambda.py file updated to the zip file
       - zip -r lambda_function.zip lambda_function.py
   post_build:

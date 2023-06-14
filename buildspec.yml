@@ -17,5 +17,6 @@ phases:
     commands:
       - echo "Updating lambda Function.."
       - aws lambda update-function-code --function-name github-to-lambda-demo --zip-file fileb://lambda_function.zip
+      - aws s3 cp lambda_function.zip s3://myuniquebucket-2023/lambda_function.zip
       - echo "Lambda function zip file uploaded to S3"
       - echo "DONE!!"

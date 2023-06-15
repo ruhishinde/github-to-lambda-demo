@@ -13,9 +13,5 @@ phases:
       - aws s3 cp lambda_function.zip s3://myuniquebucket-2023/lambda_function.zip
       - echo "Lambda function zip file uploaded to S3"
       - echo "Generate logs"   
-      - echo "Custom log message 1"
-      - echo "Custom log message 2"
-    finally:
       - aws logs create-log-stream --log-group-name Github-lambda-group --log-stream-name github-lambda-log-stream
-      - aws logs put-log-events --log-group-name Github-lambda-group --log-stream-name github-lambda-log-stream --log-events timestamp=$(date +%s000),message="Build completed"
       - echo "DONE!!"

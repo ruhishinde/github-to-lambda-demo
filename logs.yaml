@@ -1,5 +1,10 @@
 version: 0.2
-
+logs:
+  cloudwatch: 
+    enabled: true
+    group-name: MyLogGroup
+    stream-name: MyLogStream
+    
 phases:
   pre_build:
     commands:

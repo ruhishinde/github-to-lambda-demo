@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - aws logs create-log-stream --log-group-name MyLogGroup --log-stream-name MyLogStream
+  build:
+    commands:
+      - echo "Build started"
+      - echo "Executing build commands..."
+      # Your build commands here
+      - echo "Build completed"
+      - aws logs put-log-events --log-group-name MyLogGroup --log-stream-name MyLogStream --log-events timestamp=$(date +%s000),message="Build completed"

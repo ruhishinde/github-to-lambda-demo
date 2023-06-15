@@ -16,6 +16,6 @@ phases:
       - echo "Custom log message 1"
       - echo "Custom log message 2"
     finally:
-      - aws logs create-log-stream --log-group-name Github-lambda-group --log-stream-name <log-stream-name>
-      - aws logs put-log-events --log-group-name Github-lambda-group --log-stream-name <log-stream-name> --log-events timestamp=$(date +%s000),message="Build completed"
+      - aws logs create-log-stream --log-group-name Github-lambda-group --log-stream-name github-lambda-log-stream
+      - aws logs put-log-events --log-group-name Github-lambda-group --log-stream-name github-lambda-log-stream --log-events timestamp=$(date +%s000),message="Build completed"
       - echo "DONE!!"

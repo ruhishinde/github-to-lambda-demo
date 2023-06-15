@@ -8,15 +8,14 @@ phases:
       - pip install -r requirements.txt
   build:
     commands:
-      - echo "Zipping deployment package..."
- ##Local directory##     
-      - cd .\github-to-lambda-demo\
- ##lambda.py file updated to the zip file
-      - zip -r lambda_function.zip lambda_function.py
-  post_build:
-    commands:
       - echo "Updating lambda Function.."
       - aws lambda update-function-code --function-name github-to-lambda-demo --zip-file fileb://lambda_function.zip
       - aws s3 cp lambda_function.zip s3://myuniquebucket-2023/lambda_function.zip
       - echo "Lambda function zip file uploaded to S3"
+      - echo "Generate logs"   
+      - echo "Custom log message 1"
+      - echo "Custom log message 2"
+    finally:
+      - aws logs create-log-stream --log-group-name Github-lambda-group --log-stream-name <log-stream-name>
+      - aws logs put-log-events --log-group-name Github-lambda-group --log-stream-name <log-stream-name> --log-events timestamp=$(date +%s000),message="Build completed"
       - echo "DONE!!"

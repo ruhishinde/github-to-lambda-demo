@@ -9,13 +9,13 @@ phases:
 
     pre_build:
     commands:
-      - aws logs create-log-stream --log-group-name Github-lambda-group --log-stream-name github-lambda-log-stream
+      - aws logs create-log-stream --log-group-name Github-lambda-group --log-stream-name github-lambda-stream
   build:
     commands:
       - echo "Zipping deployment package..."
       - cd .\github-to-lambda-demo\
       - zip -r lambda_function.zip lambda_function.py
-      - aws logs put-log-events --log-group-name  Github-lambda-group --log-stream-name github-lambda-log-stream --log-events timestamp=$(date +%s000),message="Build completed"
+      - aws logs put-log-events --log-group-name  Github-lambda-group --log-stream-name github-lambda-stream --log-events timestamp=$(date +%s000),message="Build completed"
   post_build:
     commands:
       - echo "Updating lambda Function.."

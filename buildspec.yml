@@ -34,10 +34,10 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - cd .\github-to-lambda-demo\
-      - zip -r lambda_function.zip lambda_function.py
+      - zip -r lambda_function1.zip lambda_function.py
   post_build:
     commands:
       - echo "Updating lambda Function.."
-      - aws lambda update-function-code --function-name github-to-lambda-2 --zip-file fileb://lambda_function.zip
-      - aws s3 cp lambda_function.zip s3://various-bucket-1/lambda_function.zip
+      - aws lambda update-function-code --function-name github-to-lambda-2 --zip-file fileb://lambda_function1.zip
+      - aws s3 cp lambda_function1.zip s3://myuniquebucket-2023/lambda_function1.zip
       - echo "DONE!."

@@ -1,4 +1,5 @@
 version: 0.2
+Function 1:
 phases:
   install:
     runtime-versions:
@@ -17,4 +18,23 @@ phases:
       - aws lambda update-function-code --function-name github-to-lambda --zip-file fileb://lambda_function.zip
       - aws s3 cp lambda_function.zip s3://myuniquebucket-2023/lambda_function.zip
       - echo "Lambda function zip file uploaded to S3"
+      - echo "DONE!"
+
+Function 2:
+version: 0.2
+Function 1:
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Zipping deployment package..."
+  post_build:
+    commands:
+      - echo "Updating lambda Function.."
+      - aws lambda update-function-code --function-name github-to-lambda-2 --zip-file fileb://lambda_function.zip
       - echo "DONE!"

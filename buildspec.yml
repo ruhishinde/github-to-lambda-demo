@@ -22,7 +22,6 @@ phases:
 
 Function 2:
 version: 0.2
-Function 1:
 phases:
   install:
     runtime-versions:
@@ -34,7 +33,7 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - cd .\github-to-lambda-demo\
-      - zip -r lambda_function1.zip lambda_function.py
+      - zip -r lambda_function1.zip lambda_fn.py
   post_build:
     commands:
       - echo "Updating lambda Function.."
